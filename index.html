@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ScanPick</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .content-container {
+            display: flex;
+            position: relative;
+            height: 100vh;
+        }
+
+        .content {
+            color: rgb(255, 255, 255);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .form-container {
+            text-align: center;
+            flex: 0 0 30%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.5s ease; /* Add transition for smooth effect */
+            transform: translateY(100%);
+            overflow: hidden;
+            position: absolute;
+            left: 20%;
+            top: 25%;
+        }
+
+        .form-container.active {
+            transform: translateY(0);
+        }
+
+        .form {
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+            position: absolute;
+            top: 50px;
+            left: 68%;
+            transform: translate(0%,-5%);
+            border-radius: 10px;
+            padding: 25px;
+            width: 16%;
+            height: 55%;
+        }
+        .content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-link.active {
+            color: #ff7200; 
+        } 
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon" >
+                <img src="logo.png" alt="Scanpick Logo" style="width: 200px;">
+            </div>
+            
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#" class="menu-link" data-target="home-content">HOME</a></li>
+                    <li><a href="#" class="menu-link" data-target="about-content">ABOUT</a></li>
+                    <li><a href="#" class="menu-link" data-target="service-content">SERVICE</a></li>
+                    <li><a href="#" class="menu-link" data-target="contact-content">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class="content-container">
+            <div id="home-content" class="content active">
+                <!-- Home content -->
+                <div class="home">
+                    <h1>Welcome to <span style="color: black;">ScanPick</span></h1>
+                    <p class="par">At Scanpick, we bring innovation to the forefront of vending machine technology, setting a new standard in convenience and efficiency. Step into the future of automated retail with our groundbreaking vending machines, designed to revolutionize your experience.</p>
+                </div>
+            </div>
+            <div id="about-content" class="content">
+                <!-- About content -->
+                <div class="about">
+                    <h1>About <span style="color: black;">Us</span></h1>
+                    <p class="par">Welcome to Scanpick! Founded by Shivam Kumar, our dedicated team, including directors Tirumareddi Naresh, Vishnu, Varun, and Arif, works tirelessly to redefine vending solutions. With a dynamic blend of skills, we push boundaries and create unparalleled experiences. Committed to excellence and innovation, our full-fledged team is the driving force behind Scanpick's success. Join us on this journey of transformation, led by a team embodying dedication, creativity, and ambition.</p>
+                </div>
+            </div>
+            <div id="service-content" class="content">
+                <!-- Service content -->
+                <div class="service">
+                    <h1>Our <span style="color: black;">Services</span></h1>
+                    <p class="par">Certainly, here's the information presented as two distinct products:
+<br>
+                        1. Cup Noodle Vending Machine:
+                        Scanpick introduces the Cup Noodle Vending Machine, delivering instant gratification to your on-the-go cravings. With a design that dispenses from three sides, it not only ensures a quick and efficient snacking experience but also minimizes waiting times. Enjoy the future of instant noodles with our cutting-edge vending solution that redefines convenience.
+                        <br>
+                        2. Food Vending Machine:
+                        Discover culinary diversity with Scanpick's Food Vending Machine. Offering a varied menu of fresh and delicious food items, this innovative machine caters to your diverse tastes. With quick and hygienic dispensing, it guarantees a seamless dining experience. The three-sided dispensing feature reduces queues, making your food selection fast, hassle-free, and always satisfying. Join us in embracing a future where innovation meets your appetite!</p>
+                </div>
+            </div>
+            <div id="contact-content" class="content">
+                <!-- Contact content -->
+                <h1>Contact <span style="color: black;">Us</span></h1>
+                <p class="par">Have questions or need assistance? Reach out to us. We're here to help!
+                    <br>
+                    Email : scanpickit@gmail.com
+                    <br>
+                    phone : +91 80507 65537
+                </p>
+            </div>
+                <div class="form">
+                    <h2>Login Here</h2>
+                    <input type="email" name="email" placeholder="Enter Email Here">
+                    <input type="password" name="" placeholder="Enter Password Here">
+                    <button class="btnn"><a href="#">Login</a></button>
+
+                    <p class="link">Don't have an account<br>
+                    <a href="#">Sign up </a> here</a></p>
+                    <p class="liw">Log in with</p>
+
+                    <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                    </div>
+
+                </div>
+            </div>       
+
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var menuLinks = document.querySelectorAll('.menu-link');
+            var contents = document.querySelectorAll('.content');
+
+            function showContent(targetId, clickedLink) {
+                contents.forEach(function(content) {
+                    content.classList.remove('active');
+                });
+
+                menuLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                });
+
+                var targetContent = document.getElementById(targetId);
+                var activeLink = clickedLink || document.querySelector('[data-target="' + targetId + '"]');
+                
+                targetContent.classList.add('active');
+                activeLink.classList.add('active');
+            }
+
+            menuLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var targetId = link.getAttribute('data-target');
+                    showContent(targetId, link);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
