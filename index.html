@@ -63,7 +63,35 @@
 
         .menu-link.active {
             color: #ff7200; 
-        } 
+        }
+
+        .terms-link {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .terms-content {
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            display: none;
+        }
+
+        .terms-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block; /* Add display property to show the content */
+        }
     </style>
 </head>
 <body>
@@ -74,12 +102,12 @@
                 <img src="logo.png" alt="Scanpick Logo" style="width: 200px;">
             </div>
             
-
             <div class="menu">
                 <ul>
                     <li><a href="#" class="menu-link" data-target="home-content">HOME</a></li>
                     <li><a href="#" class="menu-link" data-target="about-content">ABOUT</a></li>
                     <li><a href="#" class="menu-link" data-target="service-content">SERVICE</a></li>
+                    <li><a href="#" class="menu-link" data-target="product-content">PRODUCT</a></li>
                     <li><a href="#" class="menu-link" data-target="contact-content">CONTACT</a></li>
                 </ul>
             </div>
@@ -118,6 +146,17 @@
                         Discover culinary diversity with Scanpick's Food Vending Machine. Offering a varied menu of fresh and delicious food items, this innovative machine caters to your diverse tastes. With quick and hygienic dispensing, it guarantees a seamless dining experience. The three-sided dispensing feature reduces queues, making your food selection fast, hassle-free, and always satisfying. Join us in embracing a future where innovation meets your appetite!</p>
                 </div>
             </div>
+            <div id="product-content" class="content">
+                <!-- product content -->
+                <h1>Products</h1>
+            
+                <!-- Add the image and buy button below the paragraph -->
+                <div class="product-info">
+                    <img src="vendingmachine.png" alt="Vending Machine" class="elevated-image">
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+            
             <div id="contact-content" class="content">
                 <!-- Contact content -->
                 <h1>Contact <span style="color: black;">Us</span></h1>
@@ -128,25 +167,56 @@
                     phone : +91 80507 65537
                 </p>
             </div>
-                <div class="form">
-                    <h2>Login Here</h2>
-                    <input type="email" name="email" placeholder="Enter Email Here">
-                    <input type="password" name="" placeholder="Enter Password Here">
-                    <button class="btnn"><a href="#">Login</a></button>
+            <div id="terms-content" class="content terms-content">
+                <!-- Terms and Conditions content -->
+                <h1>Terms and Conditions</h1>
+                <p class="par">Read these terms carefully before using ScanPick's vending machine services.</p>
+            
+                <h4>1. Acceptance of Terms</h4>
+                <p class="par-small">By using ScanPick's services, you agree to comply with these Terms. If not, please do not use our services.</p><br>
+            
+                <h4>2. Service Description</h4>
+                <p class="par-small">ScanPick provides vending machine solutions for convenient and innovative retail experiences.</p><br>
+            
+                <h4>3. Ownership and Licensing</h4>
+                <p class="par-small">Upon purchasing a machine, you own the physical unit. ScanPick retains ownership of software and technology.</p><br>
+            
+                <h4>4. Service Agreement</h4>
+                <p class="par-small">Customers enter a service agreement outlining terms, duration, and conditions, including installation and maintenance.</p><br>
+            
+                <h4>5. Payment and Fees</h4>
+                <p class="par-small">Customers agree to pay all associated fees for machine purchase or service, specified in the agreement.</p><br>
+            
+                <h4>6. Machine Usage</h4>
+                <p class="par-small">Customers are granted the right to use machines for intended purposes. Unauthorized use is strictly prohibited.</p><br>
+            
+                <h4>7. Maintenance and Repairs</h4>
+                <p class="par-small">ScanPick is responsible for maintenance and repairs under the service agreement.</p><br>
+            
+                <h4>8. Stocking and Inventory</h4>
+                <p class="par-small">ScanPick regularly stocks machines with agreed-upon inventory. Customers may request changes based on availability.</p><br>
+            
+                <h4>9. Termination of Service</h4>
+                <p class="par-small">Either party may terminate the service agreement with proper notice, resulting in machine retrieval and settling outstanding fees.</p>
 
-                    <p class="link">Don't have an account<br>
+            </div>
+        
+            <div class="form">
+                <h2>Login Here</h2>
+                <input type="email" name="email" placeholder="Enter Email Here">
+                <input type="password" name="" placeholder="Enter Password Here">
+                <button class="btnn"><a href="#">Login</a></button>
+                <p class="link">Don't have an account<br>
                     <a href="#">Sign up </a> here</a></p>
-                    <p class="liw">Log in with</p>
-
-                    <div class="icons">
-                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-                    </div>
-
+                <p class="liw">Log in with</p>
+                <div class="icons">
+                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
                 </div>
-            </div>       
-
+            </div>
+        </div> 
+        <div class="terms-link" onclick="showTerms()">Terms and Conditions</div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
@@ -179,6 +249,22 @@
                 });
             });
         });
+
+        function showTerms() {
+            var termsContent = document.getElementById('terms-content');
+            var contents = document.querySelectorAll('.content');
+
+            contents.forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            var menuLinks = document.querySelectorAll('.menu-link');
+            menuLinks.forEach(function(link) {
+                link.classList.remove('active');
+            });
+
+            termsContent.classList.add('active');
+        }
     </script>
 </body>
 </html>
