@@ -3,6 +3,49 @@
     padding: 0;
 }
 
+.terms-content h4 {
+    padding-left: 17px;
+}
+
+/* Add the following styles to your existing styles in the <style> tag */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.elevated-image {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust the shadow as needed */
+    border-radius: 5px; /* Optional: Add border-radius for a rounded appearance */
+    transition: transform 0.3s ease;
+}
+
+.elevated-image:hover {
+    transform: translateY(-5px); /* Adjust the vertical translation on hover */
+}
+
+.buy-btn {
+    margin-top: 10px; /* Adjust the margin as needed */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #E25E3E; /* Adjust the background color as needed */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buy-btn:hover {
+    background-color: #C63D2F; /* Adjust the hover background color as needed */
+}
+
+
+.terms-content .par-small {
+    padding-left: 17px;
+}
+
 .main{
     width: 100%;
     /* background: linear-gradient(to top, rgb(255, 166, 0),rgb(156, 252, 1)); */
