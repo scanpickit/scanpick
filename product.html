@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ScanPick</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+
+        .content-container {
+            display: flex;
+            position: relative;
+            height: 100vh;
+        }
+
+        .content {
+            color: rgb(255, 255, 255);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .form-container {
+            text-align: center;
+            flex: 0 0 30%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.5s ease; /* Add transition for smooth effect */
+            transform: translateY(100%);
+            overflow: hidden;
+            position: absolute;
+            left: 20%;
+            top: 25%;
+        }
+
+        .form-container.active {
+            transform: translateY(0);
+        }
+
+        .form {
+            text-align: center;
+            background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+            position: absolute;
+            top: 50px;
+            left: 68%;
+            transform: translate(0%,-5%);
+            border-radius: 10px;
+            padding: 25px;
+            width: 16%;
+            height: 55%;
+        }
+        .content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-link.active {
+            color: #ff7200; 
+        }
+
+        .terms-link {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .terms-content {
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            display: none;
+        }
+
+        .terms-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block; /* Add display property to show the content */
+        }
+
+        .navbar {
+        display: flex;
+        align-items: center; /* Align items vertically */
+        justify-content: space-between; /* Distribute items evenly */
+        }
+
+        .logout {
+            margin-left: auto; /* Pushes the logout button to the right */
+            margin-right: 20px; /* Add margin for spacing */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <img src="img/logo.png" alt="Scanpick Logo" style="width: 200px;">
+            </div>
+            
+            <div class="menu">
+                <ul>
+                    <li><a href="#" class="menu-link" data-target="home-content">HOME</a></li>
+                    <li><a href="#" class="menu-link" data-target="about-content">ABOUT</a></li>
+                    <li><a href="#" class="menu-link" data-target="service-content">SERVICE</a></li>
+                    <li><a href="#" class="menu-link" data-target="product-content">PRODUCT</a></li>
+                    <li><a href="#" class="menu-link" data-target="contact-content">CONTACT</a></li>
+                </ul>
+            </div>
+        
+            <div class="logout">
+                <button class="btn btn-danger" id="logout">Log-Out</button>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <div id="home-content" class="content active">
+                <!-- Home content -->
+                <div class="home">
+                    <h1>Welcome to <span style="color: black;">ScanPick</span></h1>
+                    <p class="par">At Scanpick, we bring innovation to the forefront of vending machine technology, setting a new standard in convenience and efficiency. Step into the future of automated retail with our groundbreaking vending machines, designed to revolutionize your experience.</p>
+                </div>
+            </div>
+            <div id="about-content" class="content">
+                <!-- About content -->
+                <div class="about">
+                    <h1>About <span style="color: black;">Us</span></h1>
+                    <p class="par">Welcome to Scanpick! Founded by Shivam Kumar, our dedicated team, including directors Tirumareddi Naresh, Vishnu, Varun, and Arif, works tirelessly to redefine vending solutions. With a dynamic blend of skills, we push boundaries and create unparalleled experiences. Committed to excellence and innovation, our full-fledged team is the driving force behind Scanpick's success. Join us on this journey of transformation, led by a team embodying dedication, creativity, and ambition.</p>
+                </div>
+            </div>
+            <div id="service-content" class="content">
+                <!-- Service content -->
+                <div class="service">
+                    <h1>Our <span style="color: black;">Services</span></h1>
+                    <p class="par">Certainly, here's the information presented as two distinct products:
+<br>
+                        1. Cup Noodle Vending Machine:
+                        Scanpick introduces the Cup Noodle Vending Machine, delivering instant gratification to your on-the-go cravings. With a design that dispenses from three sides, it not only ensures a quick and efficient snacking experience but also minimizes waiting times. Enjoy the future of instant noodles with our cutting-edge vending solution that redefines convenience.
+                        <br>
+                        2. Food Vending Machine:
+                        Discover culinary diversity with Scanpick's Food Vending Machine. Offering a varied menu of fresh and delicious food items, this innovative machine caters to your diverse tastes. With quick and hygienic dispensing, it guarantees a seamless dining experience. The three-sided dispensing feature reduces queues, making your food selection fast, hassle-free, and always satisfying. Join us in embracing a future where innovation meets your appetite!</p>
+                </div>
+            </div>
+            <div id="product-content" class="content">
+                <!-- product content -->
+                <h1>Products</h1>
+            
+                <!-- Add the image and buy button below the paragraph -->
+                <div class="product-info">
+                    <img src="img/vendingmachine.png" alt="Vending Machine" class="elevated-image">
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+            
+            <div id="contact-content" class="content">
+                <!-- Contact content -->
+                <h1>Contact <span style="color: black;">Us</span></h1>
+                <p class="par">Have questions or need assistance? Reach out to us. We're here to help!
+                    <br>
+                    Email : scanpickit@gmail.com
+                    <br>
+                    phone : +91 80507 65537
+                </p>
+            </div>
+            <div id="terms-content" class="content terms-content">
+                <!-- Terms and Conditions content -->
+                <h1>Terms and Conditions</h1>
+                <p class="par">Read these terms carefully before using ScanPick's vending machine services.</p>
+            
+                <h4>1. Acceptance of Terms</h4>
+                <p class="par-small">By using ScanPick's services, you agree to comply with these Terms. If not, please do not use our services.</p><br>
+            
+                <h4>2. Service Description</h4>
+                <p class="par-small">ScanPick provides vending machine solutions for convenient and innovative retail experiences.</p><br>
+            
+                <h4>3. Ownership and Licensing</h4>
+                <p class="par-small">Upon purchasing a machine, you own the physical unit. ScanPick retains ownership of software and technology.</p><br>
+            
+                <h4>4. Service Agreement</h4>
+                <p class="par-small">Customers enter a service agreement outlining terms, duration, and conditions, including installation and maintenance.</p><br>
+            
+                <h4>5. Payment and Fees</h4>
+                <p class="par-small">Customers agree to pay all associated fees for machine purchase or service, specified in the agreement.</p><br>
+            
+                <h4>6. Machine Usage</h4>
+                <p class="par-small">Customers are granted the right to use machines for intended purposes. Unauthorized use is strictly prohibited.</p><br>
+            
+                <h4>7. Maintenance and Repairs</h4>
+                <p class="par-small">ScanPick is responsible for maintenance and repairs under the service agreement.</p><br>
+            
+                <h4>8. Stocking and Inventory</h4>
+                <p class="par-small">ScanPick regularly stocks machines with agreed-upon inventory. Customers may request changes based on availability.</p><br>
+            
+                <h4>9. Termination of Service</h4>
+                <p class="par-small">Either party may terminate the service agreement with proper notice, resulting in machine retrieval and settling outstanding fees.</p>
+
+            </div>
+    
+        </div> 
+        <div class="terms-link" onclick="showTerms()">Terms and Conditions</div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+
+    <script type="module">
+        let UserCred = JSON.parse(sessionStorage.getItem("user-cred"));
+        let UserInfor = JSON.parse(sessionStorage.getItem("user-info"));
+        let SignOutBtn = document.getElementById('logout');
+
+        let SignOut = () =>{
+            sessionStorage.removeItem("user-cred");
+            sessionStorage.removeItem("user-info");
+            window.location.href="index.html";
+        }
+        
+        SignOutBtn.addEventListener('click',SignOut);
+    </script>
+    
+</body>
+</html>

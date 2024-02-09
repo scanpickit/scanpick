@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>    <!------ Include the above in your HEAD tag ---------->
+    <link rel="stylesheet" href="userRegStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Create Account</h4>
+	<p class="text-center">Get started with your free account</p>
+	<form id="MainForm">
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input id="user-name" name="" class="form-control" placeholder="Full name" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input id="user-email" name="" class="form-control" placeholder="Email address" type="email">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+		</div>
+		<select id="user-code" class="custom-select" style="max-width: 120px;">
+		    <option selected="">+971</option>
+		    <option value="1">+972</option>
+		    <option value="2">+198</option>
+		    <option value="3">+701</option>
+		</select>
+    	<input id="user-phone" name="" class="form-control" placeholder="Phone number" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+		</div>
+		<select class="form-control">
+			<option selected=""> Select job type</option>
+			<option>Designer</option>
+			<option>Manager</option>
+			<option>Accaunting</option>
+		</select>
+	</div> <!-- form-group end.// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" placeholder="Create password" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input id="user-pwd" class="form-control" placeholder="Repeat password" type="password">
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button id="submit-btn" type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+        <a href="index.html"><button id="sign-in" type="button" class="btn btn-primary btn-block"> Sign-in </button></a>
+
+    </div> <!-- form-group// -->      
+    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+</form>
+</article>
+</div> 
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyBz98vu0K-dm4P7fcAhHHmPo821toxUmeo",
+      authDomain: "site-41a88.firebaseapp.com",
+      projectId: "site-41a88",
+      storageBucket: "site-41a88.appspot.com",
+      messagingSenderId: "575476756653",
+      appId: "1:575476756653:web:2961f0aef119836fae1624",
+      measurementId: "G-WNWT4GCYMG",
+      databaseURL: "site-41a88.firebaseio.com"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    const auth = getAuth(app);
+    const analytics = getAnalytics(app);
+
+    const emailInput = document.getElementById('user-email');
+    const pwdInput = document.getElementById('user-pwd');
+    const nameInput = document.getElementById('user-name');
+
+    const registerUser = event => {
+        event.preventDefault();
+
+        const email = emailInput.value;
+        const pwd = pwdInput.value;
+        const name = nameInput.value;
+
+        createUserWithEmailAndPassword(auth, email, pwd)
+        .then(async (credentials) => {
+            console.log("Successfully created user:", credentials.user.uid);
+            // You can save additional user data to your database here
+            // For example:
+            // db.ref('users/' + credentials.user.uid).set({
+            //    username: name,
+            //    email: email
+            // });
+            var ref = doc(db, "UserAuthList", credentials.user.uid);
+            await setDoc(ref, {
+                username: name,
+            })
+        })
+        .catch((error) => {
+            console.error("Error creating user:", error.message);
+        });
+    }
+
+    const mainForm = document.getElementById('MainForm');
+    mainForm.addEventListener('submit', registerUser);
+</script>
+
+</body>
+</html>
