@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var aboutContent = document.getElementById("about-content");
     var serviceContent = document.getElementById("service-content");
     var contactContent = document.getElementById("contact-content");
+    var cartContent = document.getElementById("new-page-content");
 
     function showHomeContent() {
         homeContent.style.display = "block";
         aboutContent.style.display = "none";
         serviceContent.style.display = "none";
         contactContent.style.display = "none";
+        cartContent.style.display = "none";
     }
 
     function showAboutContent() {
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
         aboutContent.style.display = "block";
         serviceContent.style.display = "none";
         contactContent.style.display = "none";
+        cartContent.style.display = "none";
     }
 
     function showServiceContent() {
@@ -24,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
         aboutContent.style.display = "none";
         serviceContent.style.display = "block";
         contactContent.style.display = "none";
+        cartContent.style.display = "none";
     }
 
     function showContactContent() {
@@ -31,12 +35,21 @@ document.addEventListener("DOMContentLoaded", function() {
         aboutContent.style.display = "none";
         serviceContent.style.display = "none";
         contactContent.style.display = "block";
+        cartContent.style.display = "none";
+    }
+    function showCartContent() {
+        homeContent.style.display = "none";
+        aboutContent.style.display = "none";
+        serviceContent.style.display = "none";
+        contactContent.style.display = "none";
+        cartContent.style.display = "block";
     }
 
     document.getElementById("home-link").addEventListener("click", showHomeContent);
     document.getElementById("about-link").addEventListener("click", showAboutContent);
     document.getElementById("service-link").addEventListener("click", showServiceContent);
     document.getElementById("contact-link").addEventListener("click", showContactContent);
+    document.getElementById("cart-link").addEventListener("click", showCartContent);
 });
 
 
