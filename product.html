@@ -22,10 +22,20 @@
             width: 50%;
             opacity: 0;
             transform: translateY(100%);
-            padding-left: 10%;
+            padding-left:5%;
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
-
+        .contentcart {
+            color: rgb(255, 255, 255);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            /* padding-left:5%; */
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
         .form-container {
             text-align: center;
             flex: 0 0 30%;
@@ -121,6 +131,9 @@
                     <li><a href="#" class="menu-link" data-target="service-content">SERVICE</a></li>
                     <li><a href="#" class="menu-link" data-target="product-content">PRODUCT</a></li>
                     <li><a href="#" class="menu-link" data-target="contact-content">CONTACT</a></li>
+                    <!-- <li><a href="#" class="menu-link" data-target="cart-content">CART</a></li> -->
+                    <li><a href="#" class="menu-link" id="new-page-link" data-target="new-page-content">CART</a></li>
+                    
                 </ul>
             </div>
         
@@ -178,6 +191,18 @@
                     phone : +91 80507 65537
                 </p>
             </div>
+
+            <div id="new-page-content" class="content" style="height: 100vh; width: 100%; padding-left:0%;">
+                <!-- Include external HTML file -->
+                <object type="text/html" data="integration.html" width="100%" height="100%"></object>
+            
+                <!-- Include external CSS file -->
+                <link rel="stylesheet" type="text/css" href="integration.css">
+            
+                <!-- Include external JavaScript file -->
+                <script src="intergation.js"></script>
+            </div>
+
             <div id="terms-content" class="content terms-content">
                 <!-- Terms and Conditions content -->
                 <h1>Terms and Conditions</h1>
