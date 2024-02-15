@@ -83,6 +83,14 @@
             text-decoration: underline;
             cursor: pointer;
         }
+        .refund-link {
+            position: absolute;
+            bottom: 10px;
+            right: 175px;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
         .terms-content {
             color: white;
@@ -101,6 +109,26 @@
             opacity: 1;
             transform: translateY(0);
             display: block; /* Add display property to show the content */
+        }
+        
+        /* refund policy */
+        .refund-content {
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            display: none;
+        }
+
+        .refund-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
         }
 
         .navbar {
@@ -203,6 +231,39 @@
                 <script src="intergation.js"></script>
             </div>
 
+            <div id="refund-content" class="content refund-content">
+                <!-- Refund Policies content -->
+                <h1>Refund Policies</h1>
+                <p class="par">Please read our refund policies carefully.</p>
+                
+                <h4>1. Eligibility for Refund</h4>
+                <p class="par-small">Refunds are eligible within 30 days of purchase under certain conditions.</p><br>
+                
+                <h4>2. Refund Process</h4>
+                <p class="par-small">To initiate a refund, please contact our customer support team with your order details.</p><br>
+                
+                <h4>3. Refund Conditions</h4>
+                <p class="par-small">Refunds are subject to inspection of returned items. Products must be unused and in the original packaging.</p><br>
+                
+                <h4>4. Refund Timeframe</h4>
+                <p class="par-small">Refunds are typically processed within 7-10 business days after approval.</p><br>
+                
+                <h4>5. Non-Refundable Items</h4>
+                <p class="par-small">Certain items such as digital downloads or personalized products are non-refundable.</p><br>
+                
+                <h4>6. Refund Method</h4>
+                <p class="par-small">Refunds are issued through the original payment method used for the purchase.</p><br>
+                
+                <h4>7. Return Shipping</h4>
+                <p class="par-small">Customers are responsible for return shipping costs unless otherwise specified.</p><br>
+                
+                <h4>8. Refund Exceptions</h4>
+                <p class="par-small">Refunds may be denied for items damaged due to misuse or negligence.</p><br>
+                
+                <h4>9. Contact Us</h4>
+                <p class="par-small">For any refund-related inquiries, please contact our customer support team at support@scanpick.com.</p>
+            </div>
+
             <div id="terms-content" class="content terms-content">
                 <!-- Terms and Conditions content -->
                 <h1>Terms and Conditions</h1>
@@ -238,6 +299,7 @@
             </div>
     
         </div> 
+        <div class="refund-link" onclick="showRefundPolicies()">Refund Policies</div>
         <div class="terms-link" onclick="showTerms()">Terms and Conditions</div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
@@ -258,6 +320,8 @@
         }
         
         SignOutBtn.addEventListener('click',SignOut);
+
+        
     </script>
     
 </body>
