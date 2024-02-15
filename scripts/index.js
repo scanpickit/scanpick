@@ -97,3 +97,19 @@ function showTerms() {
 
     termsContent.classList.add('active');
 }
+
+function showRefundPolicies() {
+    var refundContent = document.getElementById('refund-content');
+    var contents = document.querySelectorAll('.content');
+
+    contents.forEach(function(content) {
+        content.classList.remove('active');
+    });
+
+    var menuLinks = document.querySelectorAll('.menu-link');
+    menuLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+
+    refundContent.classList.add('active');
+}
