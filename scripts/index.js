@@ -113,3 +113,18 @@ function showRefundPolicies() {
 
     refundContent.classList.add('active');
 }
+function showPrivacy() {
+    var privacyContent = document.getElementById('privacy-content');
+    var contents = document.querySelectorAll('.content');
+
+    contents.forEach(function(content) {
+        content.classList.remove('active');
+    });
+
+    var menuLinks = document.querySelectorAll('.menu-link');
+    menuLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+
+    privacyContent.classList.add('active');
+}
