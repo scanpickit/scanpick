@@ -130,6 +130,32 @@
             transform: translateY(0);
             display: block;
         }
+        .privacy-content {
+            color: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(100%);
+            padding-left: 10%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            display: none;
+        }
+
+        .privacy-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+        .privacy-link {
+            position: absolute;
+            bottom: 10px;
+            right: 425px;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
         .navbar {
         display: flex;
@@ -230,10 +256,36 @@
                 <!-- Include external JavaScript file -->
                 <script src="intergation.js"></script>
             </div>
-
+             <!-- Privacy Policy content -->
+             <div id="privacy-content" class="content privacy-content">
+                <!-- Privacy Policy content -->
+                <h1>Privacy Policy</h1>
+                <p class="par">Your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal information.</p>
+                <br>
+                <h4>1. Information We Collect:</h4>
+                <p class="par-small">We collect your name, email, contact details, and payment information when you make a purchase.</p>
+                <br>
+                <h4>2. How We Use Your Information:</h4>
+                <p class="par-small">We use your data to process orders, provide customer support, and send promotional emails.</p>
+                <br>
+                <h4>3. Protection of Your Information:</h4>
+                <p class="par-small">We employ security measures like encryption and SSL to safeguard your data.</p>
+                <br>
+                <h4>4. Third-Party Disclosure:</h4>
+                <p class="par-small">We do not share your personal information with outside parties without your consent.</p>
+                <br>
+                <h4>5. Cookies:</h4>
+                <p class="par-small">Our website uses cookies for improved functionality and analytics.</p>
+                <br>
+                <h4>6. Your Rights:</h4>
+                <p class="par-small">You have the right to access, update, or delete your personal information.</p>
+                <br>
+                <h4>7. Updates to This Policy:</h4>
+                <p class="par-small">We may update this policy from time to time, and changes will be reflected on this page.</p>
+            </div>
             <div id="refund-content" class="content refund-content">
                 <!-- Refund Policies content -->
-                <h1>Refund Policies</h1>
+                <h1>Refund and Cancellation Policies</h1>
                 <p class="par">Please read our refund policies carefully.</p>
                 
                 <h4>1. Eligibility for Refund</h4>
@@ -299,7 +351,9 @@
             </div>
     
         </div> 
-        <div class="refund-link" onclick="showRefundPolicies()">Refund Policies</div>
+        <div class="privacy-link" onclick="showPrivacy()">Privacy Policy</div>
+
+        <div class="refund-link" onclick="showRefundPolicies()">Refund and Cancellation Policies</div>
         <div class="terms-link" onclick="showTerms()">Terms and Conditions</div>
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
